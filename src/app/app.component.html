@@ -1,15 +1,66 @@
- <div class="container">
+<div class="container">
   <div class="row">
     <div class="col-md-6">
       <h2>One way data Binding</h2>
-        <p>Using InterPolation concept Implemented FirstName :  <b>{{firstName}}</b></p> 
-        <p>Using Property Binding Implemented lastName :  <b><span [innerHTML] = 'lastName'></span></b></p>
-         <p [style.color]="'blue'">Here we are using Style binding </p>
+      <p>Using InterPolation concept Implemented FirstName : <b>{{firstName}}</b></p>
+      <p>Using Property Binding Implemented lastName : <b><span [innerHTML]='lastName'></span></b></p>
+      <div>
+        <p [class.myClass]="isTrue">Used class Binding Concept</p>
+        <p [class.myClass]="!isTrue">Used Class Binding Concept</p>
+      </div>
+      <div [className]="'red'">Test</div>
+      <p [style.color]="'blue'">Here we are using Style binding </p>
     </div>
     <div class="col-md-6">
       <h2>Two Way data Binding</h2><br>
       <input type="text" [(ngModel)]="fullName" />
-       My Full Name is <b>{{fullName}}</b>
+      My Full Name is <b>{{fullName}}</b>
     </div>
   </div>
- </div>
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Structural Directive</h2>
+      <p>*ngIf Directive</p>
+      <p *ngIf="showElement">Show Element *ngIf</p>
+      <div class="card-body">
+        Switch Case : <input type="text" [(ngModel)]="num" />
+        <div [ngSwitch]="num">
+          <div *ngSwitchCase="1">One</div>
+          <div *ngSwitchCase="2">Two</div>
+          <div *ngSwitchCase="3">Three</div>
+          <div *ngSwitchCase="4">Four</div>
+          <div *ngSwitchCase="5">Five</div>
+          <div *ngSwitchDefault>This is default</div>
+        </div>
+      </div> <br />
+      <b>*ngFor Directive</b>
+      <ul>
+        <li *ngFor="let color of colors">{{color}}</li>
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <h2>Attribute Directive</h2>
+      <!-- <p [color]>Highlight Color</p> -->
+      <h2>NgStyle Example</h2>
+      <ul *ngFor="let person of people">
+        <li [ngStyle]="{'color' : getColor(person.country)}">{{person.name}} from {{person.country}}</li>
+      </ul>
+      <h2>NgClass Example</h2>
+      <ul *ngFor="let person of people">
+        <li [ngClass]="{
+          'text-success' : person.country === 'switzerland',
+          'text-primary' : person.country === 'West Indies',
+          'text-danger' :  person.country === 'spain'
+        }"> {{person.name}} from {{person.country}}
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <h2>Custom Directive</h2>
+      First Name : <input type="text" alphaNumeric  placeholder="Enter FirstName"> <br />
+        <b>Note : It allows only alphaNumeric Characters</b> <br />
+      Last Name : <input type="text" alphabet placeholder="Enter LastName"><br />
+      <b>Note : It allows only Alphabets</b> <br />
+      Mobile Number : <input type="text" number placeholder="Enter Mobile Number" /> <br />
+      <b>Note : It allows only Numbers</b>
+    </div>
+  </div>
